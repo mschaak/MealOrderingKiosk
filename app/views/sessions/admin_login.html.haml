@@ -1,0 +1,13 @@
+%h1 Admin Login
+
+= form_tag admin_login_create_path, :method => :post, :id => 'login' do
+
+  %br
+  = label :session, :admin_username, 'User-ID'
+  = text_field :session, 'admin_username'
+
+  = label :session, :admin_password, 'Password'
+  = password_field :session, 'admin_password'
+  %br
+    %br
+  =submit_tag "Login as Admin", :id => 'login'

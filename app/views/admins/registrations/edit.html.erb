@@ -1,0 +1,70 @@
+<h1>Edit <%= resource_name.to_s.humanize %></h1>
+<%= button_to "Cancel", :back, method: :get, class: 'dangerButton'%>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: 'login' }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <br />
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :username %>
+    <%= f.text_field :admin_username, autofocus: true, autocomplete: "admin_username" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :first_name %>
+    <%= f.text_field :admin_first_name, autofocus: true, autocomplete: "admin_first_name" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :last_name %>
+    <%= f.text_field :admin_last_name, autofocus: true, autocomplete: "admin_last_name" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :phone_number %> <i> Format: (XXX-XXX-XXXX)</i><br />
+    <%= f.phone_field :admin_phonenumber, autofocus: true, autocomplete: "admin_phonenumber" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <br />
+    <%= f.label :password %> <i>Leave blank unless you wish to change passwords</i><br />
+    <% if @minimum_password_length %>
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password_confirmation %><i>Confirm new password</i><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :current_password %> <i>We need your current password to confirm your changes</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <br />
+    <%= f.submit "Update", :class => 'general', data: {disable_with: "Please wait..."} %>
+  </div>
+
+<% end %>
+
+<p><%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure? This action can not be reversed.", disable_with: "Please wait..."}, method: :delete,  :class => 'dangerButton'%> </p>
+
+

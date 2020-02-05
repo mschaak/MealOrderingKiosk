@@ -1,0 +1,8 @@
+%h1 Welcome #{@current_student.student_first_name} #{@current_student.student_last_name}!
+
+=button_to 'Order', current_menu_path, method: :get, :id => 'navigation_button'
+%br
+  %br
+
+=button_to 'Track Habits', order_history_path, method: :get, :id => 'navigation_button'
+

@@ -1,0 +1,31 @@
+%h1 #{current_student.student_first_name} #{current_student.student_last_name}'s Account
+
+%h2 Email:
+%h4 #{current_student.email}
+
+%h2 Username:
+%h4 #{current_student.student_username}
+
+%h2 Phone Number:
+%h4 #{current_student.student_phonenumber}
+
+%h2 Dietary Restrictions:
+- if @diet_hash[:VGN] == false && @diet_hash[:VGT] == false && @diet_hash[:GF] == false && @diet_hash[:NF] == false && @diet_hash[:DF] == false
+  %h4 None
+- else
+  - if @diet_hash[:VGN] == true
+    %h4 Vegan
+  - if @diet_hash[:VGT] == true
+    %h4 Vegetarian
+  - if @diet_hash[:DF] == true
+    %h4 Dairy Free
+  - if @diet_hash[:NF] == true
+    %h4 Nut Free
+  - if @diet_hash[:GF] == true
+    %h4 Gluten Free
+%h2 Total Calories:
+%h4 #{@totalCal}
+
+%h2 Today's Calories:
+%h4 #{@todays_calories}
+=button_to 'Edit Account', edit_student_registration_path, method: :get, :class => 'general'

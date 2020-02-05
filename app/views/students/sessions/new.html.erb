@@ -1,0 +1,33 @@
+<h1>Student Login</h1>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:id => 'login'}) do |f| %>
+  <div class="field">
+    <br />
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: 'student_login_email' %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "current-password", id: 'student_login_password' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <br />
+      <%= f.check_box :remember_me%>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions" >
+    <%= f.submit "Login", id: 'login', data: {disable_with: "Logging in..."}%>
+  </div>
+
+  <br />
+  <%= render "students/shared/links" %>
+  <%= link_to "Back", root_path %>
+<% end %>
+
+

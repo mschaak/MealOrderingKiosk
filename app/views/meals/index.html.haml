@@ -1,0 +1,48 @@
+%h1 Menu Schedule
+
+%br
+=link_to 'Add new meal', new_meal_path, method: :get
+%br
+%br
+= form_tag meals_path, :method => :get do
+  %h3 Dietary Restrictions:
+  = check_box_tag "restrictions[VGN]", 1, @selected_admin_restrictions.include?("VGN"), :id => "restrictionsAdmin_VGN", class: 'filter'
+  = "Vegan"
+  = check_box_tag "restrictions[VGT]", 1, @selected_admin_restrictions.include?("VGT"), :id => "restrictionsAdmin_VGT", class: 'filter'
+  = "Vegetarian"
+  = check_box_tag "restrictions[GF]", 1, @selected_admin_restrictions.include?("GF"), :id => "restrictionsAdmin_GF", class: 'filter'
+  = "Gluten Free"
+  = check_box_tag "restrictions[NF]", 1, @selected_admin_restrictions.include?("NF"), :id => "restrictionsAdmin_NF", class: 'filter'
+  = "Nut Free"
+  = check_box_tag "restrictions[DF]", 1, @selected_admin_restrictions.include?("DF"), :id => "restrictionsAdmin_DF", class: 'filter'
+  = "Dairy Free"
+  = submit_tag 'Filter', :id => 'refresh_restrictions', :class => 'filterButton'
+
+%br
+%table#meals
+  %thead
+    %tr
+      %th{:class => @name_header}= link_to 'Name', meals_path(:sort => 'name')
+      %th{:class => @calorie_header}= link_to 'Calories', meals_path(:sort => 'calories')
+      %th{:class => @monday_header}= link_to 'Mon', meals_path(:sort => 'monday')
+      %th{:class => @tuesday_header}= link_to 'Tue', meals_path(:sort => 'tuesday')
+      %th{:class => @wednesday_header}= link_to 'Wed', meals_path(:sort => 'wednesday')
+      %th{:class => @thursday_header}= link_to 'Thu', meals_path(:sort => 'thursday')
+      %th{:class => @friday_header}= link_to 'Fri', meals_path(:sort => 'friday')
+      %th{:class => @saturday_header}= link_to 'Sat', meals_path(:sort => 'saturday')
+      %th{:class => @sunday_header}= link_to 'Sun', meals_path(:sort => 'sunday')
+  %tbody
+    - @meals.each do |meal|
+      %tr
+        %td= meal.meal_name
+        %td= meal.meal_calories
+        %td= meal.monday ? "x" : ""
+        %td= meal.tuesday ? "x" : ""
+        %td= meal.wednesday ? "x" : ""
+        %td= meal.thursday ? "x" : ""
+        %td= meal.friday ? "x" : ""
+        %td= meal.saturday ? "x" : ""
+        %td= meal.sunday ? "x" : ""
+        %td= button_to 'Edit', edit_meal_path(meal), :method => :get, :id => "#{meal.meal_name}editButton", :class => 'tableButton'
+        %td= button_to 'Delete', meal_path(meal), :method => :delete, :id => "#{meal.meal_name}deleteButton", :class => 'tableButton', data: {disable_with: "Delete"}
+

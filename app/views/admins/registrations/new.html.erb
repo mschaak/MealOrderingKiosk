@@ -1,0 +1,57 @@
+<h1>Create New Admin Account</h1>
+<%= button_to "Cancel", :back, method: :get, class: 'dangerButton'%>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => 'login'}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <br />
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "admin_email" %>
+  </div>
+  <div class="field">
+    <br />
+    <%= f.label :admin_username %>
+    <%= f.text_field :admin_username, autofocus: true, autocomplete: "admin_username", id: "admin_uname"  %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :First_Name %>
+    <%= f.text_field :admin_first_name, autofocus: true, autocomplete: "admin_first_name", id: "admin_fname" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :Last_Name %>
+    <%= f.text_field :admin_last_name, autofocus: true, autocomplete: "admin_username", id: "admin_lname" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :Phone_number %><i>Format: (XXX-XXX-XXXX)</i><br />
+    <%= f.phone_field :admin_phonenumber, autofocus: true, autocomplete: "admin_phonenumber", id: "admin_pnumber" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", id: "admin_pword" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "admin_pwordconfirmation" %>
+  </div>
+
+  <div class="actions">
+    <br />
+    <%= f.submit "Create Account", id: 'login', data: {disable_with: "Please wait..."}%>
+  </div>
+
+<% end %>
+
+

@@ -1,0 +1,14 @@
+%h1 Homepage
+
+%h2 Student Login
+
+=button_to 'Student Login', student_session_path, method: :get, :id => "login"
+= link_to 'New student account', new_student_registration_path, method: :get
+%br
+%br
+%h2 Admin Login
+
+=button_to 'Admin Login', admin_session_path, method: :get, :id => "login"
+
+
+

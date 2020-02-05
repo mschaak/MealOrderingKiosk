@@ -1,0 +1,14 @@
+%h1 #{current_admin.admin_first_name} #{current_admin.admin_last_name}'s Account
+
+%h2 Email:
+%h4 #{current_admin.email}
+
+%h2 Username:
+%h4 #{current_admin.admin_username}
+
+%h2 Phone number:
+%h4 #{current_admin.admin_phonenumber}
+
+
+=button_to 'Edit Account', edit_admin_registration_path, method: :get, :class => 'general'
+= button_to "Create New Admin Account", new_admin_registration_path, method: :get, :class => 'general'

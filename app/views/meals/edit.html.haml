@@ -1,0 +1,60 @@
+%h1 Edit #{@meal.meal_name}
+
+=button_to 'Cancel', meals_path, method: :get, :class => 'general'
+
+=form_tag schedule_path, :id => 'edit' do
+  = label :meal, :meal_name, 'Meal Name'
+  = text_field :meal, 'meal_name'
+
+  = label :meal, :meal_calories, 'Calories'
+  = number_field :meal, 'meal_calories'
+  %br/
+  %h3 Schedule
+  = hidden_field_tag 'meal[monday]', ''
+  = check_box_tag 'meal[monday]', 1, @meal.monday
+  = 'Monday'
+  = hidden_field_tag 'meal[tuesday]', ''
+  = check_box_tag 'meal[tuesday]', 1, @meal.tuesday
+  = 'Tuesday'
+  = hidden_field_tag 'meal[wednesday]', ''
+  = check_box_tag 'meal[wednesday]', 1, @meal.wednesday
+  = 'Wednesday'
+  = hidden_field_tag 'meal[thursday]', ''
+  = check_box_tag 'meal[thursday]', 1, @meal.thursday
+  = 'Thursday'
+  = hidden_field_tag 'meal[friday]', ''
+  = check_box_tag 'meal[friday]', 1, @meal.friday
+  = 'Friday'
+  %br/
+  = hidden_field_tag 'meal[saturday]', ''
+  = check_box_tag 'meal[saturday]', 1, @meal.saturday
+  = 'Saturday'
+  = hidden_field_tag 'meal[sunday]', ''
+  = check_box_tag 'meal[sunday]', 1, @meal.sunday
+  = 'Sunday'
+  %br/
+  %h3 Dietary Restrictions
+  = hidden_field_tag 'meal[VGN]', ''
+  = check_box_tag 'meal[VGN]', 1, @restrictions[:VGN]
+  = 'Vegan'
+  = hidden_field_tag 'meal[VGT]', ''
+  = check_box_tag 'meal[VGT]', 1, @restrictions[:VGT]
+  = 'Vegetarian'
+  = hidden_field_tag 'meal[GF]', ''
+  = check_box_tag 'meal[GF]', 1, @restrictions[:GF]
+  = 'Gluten Free'
+  = hidden_field_tag 'meal[NF]', ''
+  = check_box_tag 'meal[NF]', 1, @restrictions[:NF]
+  = 'Nut Free'
+  = hidden_field_tag 'meal[DF]', ''
+  = check_box_tag 'meal[DF]', 1, @restrictions[:DF]
+  = 'Dairy Free'
+  %br/
+  %br/
+  = label :meal, :description, 'Description'
+  = text_area :meal, 'description', value: @meal.description
+  %br/
+  %br/
+  = submit_tag 'Update', :class => 'general', data: {disable_with: "Please wait..."}
+
+

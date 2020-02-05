@@ -1,0 +1,17 @@
+%h1 Order History
+%table#orders
+  %thead
+    %tr
+      %th Meal
+      %th Calories
+      %th Date/Time
+      %th Status
+  %tbody
+    - @orders_list.each do |order|
+      %tr
+        %td= order.meal.meal_name
+        %td= order.meal.meal_calories
+        %td= time_convert(order.created_at)
+        %td= order.complete ? 'Complete' : "In Progress"
+  %h2 Total Calories
+  %h3 #{@totalCal}

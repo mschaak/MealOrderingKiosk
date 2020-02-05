@@ -1,0 +1,299 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: White;
+  color: DarkSlateGrey;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 10pt;
+}
+div#main {
+  margin: 0;
+  padding: 0 20px 20px;
+}
+a {
+  background: transparent;
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+h1 {
+  color: black;
+  font-size: 200%;
+  font-style: italic;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid DarkSlateGrey;
+}
+h2{
+  color: black;
+}
+
+h3{
+  color: black;
+}
+
+h4{
+  font-size: 16px;
+}
+
+h1.title {
+  margin: 0 0 0;
+  padding: 10px;
+  background-color: #192b2a;
+  color: white;
+  font-size: 2em;
+  font-style: normal;
+}
+table#meals, table#orders {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+}
+table#meals th, table#orders th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: #38928a94;
+  color: black;
+  padding: 4px;
+  text-align: left;
+  font-size: 18px;
+}
+table#meals tr, table#orders tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table#meals td, table#orders td {
+  font-size: 20px;
+  padding: 4px 0;
+  margin: 4px 4px;
+}
+
+table#meals td:nth-child(n+3){
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  padding: 1px 1px;
+}
+
+
+.tableButton{
+  background-color: #38928a94;
+  border: none;
+  color: black;
+  padding: 16px 14px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 95%;
+  height: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.tableButton:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #1b6962;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#notice {
+  margin: 4px 4px;
+  padding: 15px;
+  background-color: #6baf3d;
+  color: white;
+  font-size: 14px;
+  width: 40%;
+  border-radius: 10px;
+}
+
+#warning{
+  margin: 4px 4px;
+  padding: 15px;
+  background-color: #f44336; /* Red */
+  color: white;
+  font-size: 14px;
+  width: 60%;
+  border-radius: 10px;
+}
+
+form label {
+  display: block;
+  line-height: 25px;
+  font-weight: bold;
+  color: black;
+}
+
+#navigation_button{
+  border-radius: 10px;
+  font-size: 32px;
+  margin: 0 auto;
+  display: block;
+  background-color: #38928a94;
+  color: black;
+  padding: 30px 40px;
+  width: 50%;
+}
+#navigation_button:hover{
+  background-color: #1b6962;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#header_button{
+  float: left;
+  background-color: #1b6962;
+  font-size: 20px;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 2px 14px;
+  width: 20%;
+}
+#header_button:hover{
+  background-color: #144a45;
+  font-size: 20px;
+}
+
+form#login, form#edit {
+  border: 2px solid #1b6962;
+  width: 40%;
+  padding: 14px 14px;
+  background-color: #d6f5f2;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+form#edit {
+  width: 48%;
+}
+
+input[type=submit]#home_button{
+  margin: auto auto;
+  background-color: #1b6962;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 12%;
+}
+
+input[type=submit]#login{
+  background-color: #1b6962;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+
+
+input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number] {
+  width: 75%;
+  padding: 6px 6px;
+  margin: 4px 0;
+  box-sizing: content-box;
+  font-size: 22px;
+}
+
+textarea {
+  width: 75%;
+  height: 75px;
+  padding: 6px 6px;
+  margin: 4px 0;
+  box-sizing: content-box;
+  font-size: 16px;
+  resize: none;
+}
+.general {
+  background-color: #1b6962;
+  padding: 12px 12px;
+}
+
+.dangerButton {
+  background-color: darkred;
+  padding: 12px 12px;
+}
+
+.filterButton {
+  padding: 6px 8px;
+  background-color: #1b6962;
+}
+
+.general, .dangerButton, .filterButton{
+  border: none;
+  color: white;
+
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.general:hover{
+  background-color: #144a45;
+}
+.dangerButton:hover{
+  background-color: #540404;
+}
+
+.filterButton:hover{
+
+  background-color: #144a45;
+}
+
+input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+  padding: 1em;
+  margin: 0 0 12px 12px;
+}
+#title_link{
+  color: white;
+  text-decoration:none;
+}
+
+#closeLink{
+  color: black;
+  text-decoration: underline;
+}
+
+#mealInfo {
+  padding: 4px 4px 10px 12px;
+  position: absolute;
+  border: 2px double grey;
+  background: #cdf2cd;
+  color: black;
+  font-size: 16px;
+}
+
+.detailsLink {
+
+}
+
+input[type=checkbox] {
+
+  margin: 2px 2px
+}
+
+input[type=checkbox].filter{
+  vertical-align: center;
+  margin: 2px 2px 2px 10px;
+}
+
+.row label {
+  display: inline-block;
+}
+
+

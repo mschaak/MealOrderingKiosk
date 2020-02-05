@@ -1,0 +1,55 @@
+%h1 Add New Meal
+
+=button_to 'Cancel', meals_path, method: :get, :class => 'general'
+
+= form_tag meals_path, :id => 'edit' do
+
+  = label :meal, :meal_name, 'Meal Name'
+  = text_field :meal, 'meal_name'
+
+  = label :meal, :meal_calories, 'Calories'
+  = number_field :meal, 'meal_calories'
+  %br
+  %br
+  %h3 Schedule
+  = check_box_tag 'meal[monday]', 1,false
+  = 'Monday'
+  = check_box_tag 'meal[tuesday]', 1,false
+  = '  Tuesday'
+  = check_box_tag 'meal[wednesday]', 1,false
+  = '  Wednesday'
+  = check_box_tag 'meal[thursday]', 1,false
+  = '  Thursday'
+  = check_box_tag 'meal[friday]', 1,false
+  = '  Friday'
+  %br/
+  = check_box_tag 'meal[saturday]', 1,false
+  = '  Saturday'
+  = check_box_tag 'meal[sunday]', 1,false
+  = '  Sunday'
+  %br
+  %br
+  %h3 Dietary Restrictions
+  = check_box_tag 'meal[VGN]', 1, false
+  = 'Vegan'
+
+  = check_box_tag 'meal[VGT]', 1, false
+  = 'Vegetarian'
+
+  = check_box_tag 'meal[GF]', 1, false
+  = 'Gluten Free'
+
+  = check_box_tag 'meal[NF]', 1, false
+  = 'Nut Free'
+
+  = check_box_tag 'meal[DF]', 1, false
+  = 'Dairy Free'
+  %br/
+  %br/
+  = label :meal, :description, 'Description'
+  = text_area :meal, 'description'
+  %br/
+  %br/
+  = submit_tag 'Add', :class => 'general', data: {disable_with: "Please wait..."}
+
+

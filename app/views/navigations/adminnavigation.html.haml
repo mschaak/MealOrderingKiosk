@@ -1,0 +1,8 @@
+%h1 Welcome #{@current_admin.admin_first_name} #{@current_admin.admin_last_name}!
+
+%br
+=button_to 'View Orders', orders_path, method: :get, :id => 'navigation_button'
+%br
+=button_to 'Schedule Menu', meals_path, method: :get, :id => 'navigation_button'
+%br
+=button_to 'See Account', navigation_show_admin_path(current_admin), method: :get, :id => 'navigation_button'

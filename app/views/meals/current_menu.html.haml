@@ -1,0 +1,45 @@
+= javascript_include_tag 'application'
+= javascript_include_tag 'diningplus'
+%h1 Today's Menu
+=button_to 'Cancel', navigation_studentnavigation_path, method: :get, :class => 'dangerButton'
+
+= form_tag current_menu_path, :method => :get do
+  = hidden_field_tag "calories_sort", true if @calories_header
+  = hidden_field_tag "meal_name_sort", true if @meal_name_header
+  %h3 Dietary Restrictions:
+  = check_box_tag "restrictions[VGN]", 1, @selected_restrictions.include?("VGN"), :id => "restrictions_VGN", class: 'filter'
+  = "Vegan"
+  = check_box_tag "restrictions[VGT]", 1, @selected_restrictions.include?("VGT"), :id => "restrictions_VGT", class: 'filter'
+  = "Vegetarian"
+  = check_box_tag "restrictions[GF]", 1, @selected_restrictions.include?("GF"), :id => "restrictions_GF", class: 'filter'
+  = "Gluten Free"
+  = check_box_tag "restrictions[NF]", 1, @selected_restrictions.include?("NF"), :id => "restrictions_NF", class: 'filter'
+  = "Nut Free"
+  = check_box_tag "restrictions[DF]", 1, @selected_restrictions.include?("DF"), :id => "restrictions_DF", class: 'filter'
+  = "Dairy Free"
+
+  = hidden_field_tag "account", false
+
+  = submit_tag 'Filter', :id => 'refresh_restrictions', :class => 'filterButton'
+
+
+= form_tag orders_path do
+  %table#orders
+    %thead
+      %tr
+        %th{:class => @meal_name_header}= link_to 'Name', current_menu_path(:sort => 'meal_name', :restrictions => @selected_restrictions, :account => false), :id => 'meal_name_header'
+        %th{:class => @calories_header}= link_to 'Calories', current_menu_path(:sort => 'calories', :restrictions => @selected_restrictions, :account => false), :id => 'calories_header'
+        %th Details
+        %th Select
+    %tbody
+      - @current_meals.each do |meal|
+        %tr
+          %td= meal.meal_name
+          %td= meal.meal_calories
+          %td= link_to "Details about #{meal.meal_name}", meal_path(meal), remote: true, method: :get, class: 'detailsLink'
+          %td= radio_button_tag 'order[meal_id]', meal.id
+  %br
+  = submit_tag 'Order', :class => 'general', data: {disable_with: "Please wait..."}
+=button_to "Preview #{weekday_to_string(Time.new.wday)}'s Menu", tomorrows_menu_path, method: :get, :class => 'general'
+
+

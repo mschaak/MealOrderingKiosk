@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title Dining +
+    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %h1.title
+      = link_to "Dining +", root_path, :id => 'title_link'
+    - if current_admin
+      =button_to "Main", navigation_adminnavigation_path, :method => :get, :id => "header_button"
+      =button_to "Orders", orders_path, :method => :get, :id => "header_button"
+      =button_to "Schedule", meals_path, :method => :get, :id => "header_button"
+      =button_to "#{current_admin.admin_username}", navigation_show_admin_path(current_admin), :method => :get, :id => "header_button"
+      =button_to "Logout", destroy_admin_session_path, :method => :delete, :id => "header_button"
+    - if current_student
+      =button_to "Main", navigation_studentnavigation_path, :method => :get, :id => "header_button"
+      =button_to "Order", current_menu_path, :method => :get, :id => "header_button"
+      =button_to "History", order_history_path, method: :get, :id => "header_button"
+      =button_to "#{current_student.student_username}", navigation_show_student_path(current_student), :method => :get, :id => "header_button"
+      =button_to "Logout", destroy_student_session_path, :method => :delete, :id => "header_button"
+
+
+    #main
+      %br
+      - if flash[:notice]
+        %br
+        #notice.message= flash[:notice]
+
+      - elsif flash[:warning]
+        %br
+        %br
+        #warning.message= flash[:warning]
+
+      = yield

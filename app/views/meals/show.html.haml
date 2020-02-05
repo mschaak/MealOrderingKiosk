@@ -1,0 +1,29 @@
+%h1 Details about #{@meal.meal_name}
+%h2 Calories: #{@meal.meal_calories}
+- diet_hash = @meal.dietary_restrictions
+- diet_hash = eval(diet_hash)
+- diet_hash.delete_if{|key, value| value == false}
+- if !diet_hash.empty?
+    %h2 Dietary Restrictions:
+    - if diet_hash[:VGN]
+        Is vegan
+        %br/
+    - if diet_hash[:VGT]
+        Is vegetarian
+        %br/
+    - if diet_hash[:GF]
+        Is gluten free
+        %br/
+    - if diet_hash[:DF]
+        Is dairy free
+        %br/
+    - if diet_hash[:NF]
+        Is nut free
+        %br/
+
+
+%h2 Description:
+#{@meal.description}
+%br/
+%br/
+=link_to 'Back to Daily Menu', current_menu_path

@@ -1,0 +1,86 @@
+<h1>Student Sign-up</h1>
+<%= button_to "Cancel", root_path, class: 'dangerButton', method: :get%>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {:id => 'login'}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <br />
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "student_email" %>
+  </div>
+  <div class="field">
+    <br />
+    <%= f.label :student_username %>
+    <%= f.text_field :student_username, autofocus: true, autocomplete: "student_username", id: "student_uname" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :First_Name %>
+    <%= f.text_field :student_first_name, autofocus: true, autocomplete: "student_first_name", id: "student_fname" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :Last_Name %>
+    <%= f.text_field :student_last_name, autofocus: true, autocomplete: "student_username", id: "student_lname" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :Phone_number %><i>Format: (XXX-XXX-XXXX)</i><br />
+    <%= f.phone_field :student_phonenumber, autofocus: true, autocomplete: "student_phonenumber", id: "student_pnumber" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", id: "student_pword" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "student_pwordconfirmation" %>
+  </div>
+  <br></br>
+
+  <div>
+    <h3>Dietary Restrictions</h3>
+  </div>
+  <div class="row">
+  <div class="field">
+    <%= f.check_box :VGN, autocomplete: false %>
+    <%= f.label :Vegan %>
+  </div>
+  <div class="field">
+    <%= f.check_box :VGT, autocomplete: false %>
+    <%= f.label :Vegetarian %>
+  </div>
+  <div class="field">
+    <%= f.check_box :GF, autocomplete: false %>
+    <%= f.label :Gluten_Free %>
+  </div>
+  <div class="field">
+    <%= f.check_box :NF, autocomplete: false %>
+    <%= f.label :Nut_Free %>
+  </div>
+  <div class="field">
+    <%= f.check_box :DF, autocomplete: false %>
+    <%= f.label :Dairy_Free %>
+  </div>
+  </div>
+
+  <div class="actions">
+    <br />
+    <%= f.submit "Sign-up", :id => 'login', data: {disable_with: "Please wait..."} %>
+  </div>
+
+  <br />
+  <%= render "students/shared/links" %>
+<% end %>
+
+

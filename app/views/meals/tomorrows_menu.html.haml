@@ -1,0 +1,19 @@
+%h1 #{weekday_to_string(Time.new.wday)}'s Menu
+=button_to 'Cancel', :back, method: :get, :class => 'dangerButton'
+
+%table#orders
+  %thead
+    %tr
+      %th{:class => @name_header}= link_to 'Name', tomorrows_menu_path(:sort => 'name')
+      %th{:class => @calorie_header}= link_to 'Calories', tomorrows_menu_path(:sort => 'calories')
+      %th Details
+  %tbody
+    - @current_meals.each do |meal|
+      %tr
+        %td= meal.meal_name
+        %td= meal.meal_calories
+        %td= link_to "Details about #{meal.meal_name}", meal_path(meal), class: "detailsLink"
+  %br
+
+=button_to "View Today's Menu", current_menu_path, method: :get, :class => 'general'
+

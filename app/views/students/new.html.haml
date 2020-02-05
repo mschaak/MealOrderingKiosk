@@ -1,0 +1,23 @@
+%h1 new students page
+
+
+= form_tag students_path do
+
+  = label :student, :student_username, 'User Name'
+  = text_field :student, 'student_username', :id => 'studentUser'
+
+  = label :student, :student_password, 'Password'
+  = text_field :student, 'student_password', :id => 'studentPassword'
+
+
+  = label :student, :student_first_name, 'First Name'
+  = text_field :student, 'student_first_name', :id => 'studentName'
+
+
+  = label :student, :student_last_name, 'Last Name'
+  = text_field :student, 'student_last_name', :id => 'studentLast'
+
+
+
+  = submit_tag 'Create my account', :id => 'signupCreate'
+

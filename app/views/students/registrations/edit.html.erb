@@ -1,0 +1,98 @@
+<h1>Edit <%= resource_name.to_s.humanize %> Account</h1>
+<%= button_to "Cancel", :back, class: 'dangerButton', method: :get%>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, id: 'login'}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
+    <br />
+    <%= f.label :email%>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :username %>
+    <%= f.text_field :student_username, autofocus: true, autocomplete: "student_username" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :first_name %>
+    <%= f.text_field :student_first_name, autofocus: true, autocomplete: "student_first_name" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :last_name %>
+    <%= f.text_field :student_last_name, autofocus: true, autocomplete: "student_last_name" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :phone_number %><i>Format: (XXX-XXX-XXXX)</i><br />
+    <%= f.phone_field :student_phonenumber, autofocus: true, autocomplete: "student_phonenumber" %>
+  </div>
+
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <br />
+    <%= f.label :password %> <i>Leave blank unless you wish to change passwords</i>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :password_confirmation %><i>Confirm new password</i><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div>
+    <% @diet_hash %>
+  </div>
+
+  <h3>Dietary Restrictions</h3>
+  <div class = "row">
+  <div class="row">
+    <%= f.check_box :VGN, checked: @diet_hash[:VGN], autocomplete: false%>
+    <%= f.label :Vegan%>
+  </div>
+  <div class="row">
+    <%= f.check_box :VGT, checked: @diet_hash[:VGT], autocomplete: false %>
+    <%= f.label :Vegetarian %>
+  </div>
+  <div class="row">
+    <%= f.check_box :GF, checked: @diet_hash[:GF], autocomplete: false %>
+    <%= f.label :Gluten_Free %>
+  </div>
+  <div class="row">
+    <%= f.check_box :NF, checked: @diet_hash[:NF],autocomplete: false %>
+    <%= f.label :Nut_Free %>
+  </div>
+  <div class="row">
+    <%= f.check_box :DF, checked: @diet_hash[:DF], autocomplete: false %>
+    <%= f.label :Dairy_Free %>
+  </div>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.label :current_password %> <i>We need your current password to confirm your changes</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit "Update", :class => 'general', data: {disable_with: "Please wait..."} %>
+  </div>
+  </div>
+
+<% end %>
+
+<p><%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure? This action can not be reversed.", disable_with: "Please wait..." }, method: :delete, :class => 'dangerButton' %></p>

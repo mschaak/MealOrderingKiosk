@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+%h1 Student Main Page
+%h2 Welcome students!
+=======
+%h1 Welcome #{@current_student.student_first_name} #{@current_student.student_last_name}!
+>>>>>>> master
+
+=button_to 'Order a Meal', current_menu_path, method: :get, :id => 'navigation_button'
+%br
+%br
+
+=button_to 'Account Details', student_path(@current_student), method: :get, :id => 'navigation_button'
+

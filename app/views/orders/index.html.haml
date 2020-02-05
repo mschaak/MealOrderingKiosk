@@ -1,0 +1,17 @@
+%h1 Current Orders
+=button_to 'Refresh', orders_path, :method => :get, :class => 'general'
+
+%table#orders
+  %thead
+    %tr
+      %th{:class => @time_header}= link_to 'Time Received', orders_path(:sort => 'time')
+      %th Student Username
+      %th Meal
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= time_convert(order.created_at)
+        %td= student_id_to_name(order.student_id)
+        %td= meal_id_to_name(order.meal_id)
+        %td= button_to "Finish", order_path(order), :method => :put, :class => "tableButton", data: {disable_with: "Finish"}
